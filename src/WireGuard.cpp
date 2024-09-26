@@ -139,6 +139,8 @@ void WireGuard::end() {
 	wireguard_peer_index = WIREGUARDIF_INVALID_INDEX;
 	// Shutdown the wireguard interface.
 	wireguardif_shutdown(wg_netif);
+
+	netif_set_down(wg_netif);    // Temporary fix
 	// Remove the WG interface;
 	netif_remove(wg_netif);
 	wg_netif = nullptr;
